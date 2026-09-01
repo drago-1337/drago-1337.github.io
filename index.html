@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DrAGo's personal site — C, C++, and Kotlin developer working on Veritas, a fast pentesting tool for Minecraft.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>DrAGo | C & Kotlin</title>
@@ -11,17 +12,20 @@
 <body>
     <header>
 
-        <nav>
+        <nav id="navbar">
             <a href="#" class="active"> Home</a>
-            <a href="#" >Soon!</a>
-            <a href="#" >Soon!</a>
-            <a href="#" >Soon!</a>
+            <a href="#">Soon!</a>
+            <a href="#">Soon!</a>
+            <a href="#">Soon!</a>
         </nav>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
     </header>
     <section class="home">
         <div class="home-content">
             <h1>It's <span>DrAGo</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
+            <h3 class="typing-text">I'm a <span><span id="typed"></span><span class="caret"></span></span></h3>
             <p>I Like Learning and Developing New things I find coding cool, fun and Intresting <br>
             I am Currently Working on Veritas Which is made in C its a pentesting tool for Minecraft
             <br>Its very fast and i think it will be the best pentesting tool for Minecraft.</p>
@@ -34,5 +38,46 @@
             <a href="https://github.com/drago-1337" target="_blank" class="btn">Contact Me!</a>
         </div>
     </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.getElementById('navbar');
+
+        hamburger.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+
+        // Typewriter effect
+        const words = ["Kotlin Developer", "C Dev", "C++ Dev"];
+        const typed = document.getElementById('typed');
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeLoop() {
+            const current = words[wordIndex];
+
+            if (!deleting) {
+                typed.textContent = current.slice(0, ++charIndex);
+                if (charIndex === current.length) {
+                    deleting = true;
+                    setTimeout(typeLoop, 2000); // pause when word fully typed
+                    return;
+                }
+                setTimeout(typeLoop, 120);
+            } else {
+                typed.textContent = current.slice(0, --charIndex);
+                if (charIndex === 0) {
+                    deleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(typeLoop, 500); // pause before next word
+                    return;
+                }
+                setTimeout(typeLoop, 60);
+            }
+        }
+
+        typeLoop();
+    </script>
 </body>
 </html>
