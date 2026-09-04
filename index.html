@@ -11,73 +11,135 @@
 </head>
 <body>
     <header>
-
         <nav id="navbar">
-            <a href="#" class="active"> Home</a>
-            <a href="#">Soon!</a>
-            <a href="#">Soon!</a>
-            <a href="#">Soon!</a>
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="javascript:void(0)" class="nav-soon" title="Projects coming soon">Soon!</a>
         </nav>
-        <div class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
-        </div>
     </header>
-    <section class="home">
+    <section class="home" id="home">
+        <div class="home-img reveal" style="--delay: 0s">
+            <img src="assets/profile.jpg" alt="DrAGo's profile picture">
+        </div>
         <div class="home-content">
-            <h1>It's <span>DrAGo</span></h1>
-            <h3 class="typing-text">I'm a <span><span id="typed"></span><span class="caret"></span></span></h3>
-            <p>I Like Learning and Developing New things I find coding cool, fun and Intresting <br>
-            I am Currently Working on Veritas Which is made in C its a pentesting tool for Minecraft
-            <br>Its very fast and i think it will be the best pentesting tool for Minecraft.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <h1 class="reveal" style="--delay: 0.15s">It's <span>DrAGo</span></h1>
+            <h3 class="typing-text reveal" style="--delay: 0.3s">I'm a <span class="typewriter-wrap"><span id="typed"></span><span class="caret"></span></span></h3>
+            <p class="reveal" style="--delay: 0.45s">I like learning and developing new things close to the metal. I find coding cool, fun, and interesting.<br>
+            Currently working on <strong>Veritas</strong>, a fast pentesting tool for Minecraft written in C. It's built for maximum performance and security research.</p>
+            <div class="social-icons reveal" style="--delay: 0.6s">
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/drago-1337" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
             </div>
-            <a href="https://github.com/drago-1337" target="_blank" class="btn">Contact Me!</a>
+            <a href="https://github.com/drago-1337" target="_blank" rel="noopener noreferrer" class="btn reveal" style="--delay: 0.75s">Contact Me!</a>
         </div>
     </section>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navbar = document.getElementById('navbar');
+    <section class="about section" id="about">
+        <h2 class="section-title reveal">About</h2>
+        <span class="section-subtitle reveal">My introduction</span>
 
-        hamburger.addEventListener('click', () => {
-            navbar.classList.toggle('active');
-        });
+        <div class="about__container container grid">
+            <div class="about__img reveal">
+                <svg class="about__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path fill="#4bb79c" d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
+                </svg>
+                <i class="fas fa-user-astronaut about__img-icon"></i>
+            </div>
 
-        // Typewriter effect
-        const words = ["Kotlin Developer", "C Dev", "C++ Dev"];
-        const typed = document.getElementById('typed');
-        let wordIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
+            <p class="about__description reveal" style="--delay: 0.1s">
+                C, C++ and Kotlin developer who loves working close to the metal.
+                I enjoy learning how things work under the hood and building new
+                things from scratch. Currently working on Veritas, a fast pentesting
+                tool for Minecraft written in C.
+            </p>
 
-        function typeLoop() {
-            const current = words[wordIndex];
+            <div class="about__info reveal" style="--delay: 0.2s">
+                <div class="about__info-box">
+                    <span class="about__info-title"><span class="counter" data-count="2">0</span>+</span>
+                    <span class="about__info-name">Years<br>coding</span>
+                </div>
+                <div class="about__info-box">
+                    <span class="about__info-title"><span class="counter" data-count="5">0</span>+</span>
+                    <span class="about__info-name">Completed<br>projects</span>
+                </div>
+                <div class="about__info-box">
+                    <span class="about__info-title"><span class="counter" data-count="3">0</span>+</span>
+                    <span class="about__info-name">Languages<br>learned</span>
+                </div>
+            </div>
 
-            if (!deleting) {
-                typed.textContent = current.slice(0, ++charIndex);
-                if (charIndex === current.length) {
-                    deleting = true;
-                    setTimeout(typeLoop, 2000); // pause when word fully typed
-                    return;
-                }
-                setTimeout(typeLoop, 120);
-            } else {
-                typed.textContent = current.slice(0, --charIndex);
-                if (charIndex === 0) {
-                    deleting = false;
-                    wordIndex = (wordIndex + 1) % words.length;
-                    setTimeout(typeLoop, 500); // pause before next word
-                    return;
-                }
-                setTimeout(typeLoop, 60);
-            }
-        }
+            <div class="about__buttons reveal" style="--delay: 0.3s">
+                <a download href="assets/CV.pdf" class="button">
+                    Download CV <i class="fas fa-download button__icon"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
-        typeLoop();
-    </script>
+    <section class="skills section" id="skills">
+        <h2 class="section-title reveal">Skills</h2>
+        <span class="section-subtitle reveal">My technical level</span>
+
+        <div class="skills__container container grid reveal">
+            <div class="skills__content skills__open">
+                <div class="skills__header">
+                    <i class="fas fa-code skills__icon"></i>
+                    <div>
+                        <h3 class="skills__title">Languages</h3>
+                        <span class="skills__subtitle">My main stack</span>
+                    </div>
+                    <i class="fas fa-angle-down skills__arrow"></i>
+                </div>
+
+                <div class="skills__list-wrapper">
+                    <div class="skills__list grid">
+                        <div class="skills__data">
+                            <div class="skills__titles">
+                                <h4 class="skills__name">C</h4>
+                                <span class="skills__number">90%</span>
+                            </div>
+                            <div class="skills__bar">
+                                <span class="skills__percentage" style="--w: 90%"></span>
+                            </div>
+                        </div>
+
+                        <div class="skills__data">
+                            <div class="skills__titles">
+                                <h4 class="skills__name">C++</h4>
+                                <span class="skills__number">80%</span>
+                            </div>
+                            <div class="skills__bar">
+                                <span class="skills__percentage" style="--w: 80%"></span>
+                            </div>
+                        </div>
+
+                        <div class="skills__data">
+                            <div class="skills__titles">
+                                <h4 class="skills__name">Kotlin</h4>
+                                <span class="skills__number">70%</span>
+                            </div>
+                            <div class="skills__bar">
+                                <span class="skills__percentage" style="--w: 70%"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p class="footer__copy">&copy; 2026 DrAGo. Built with passion.</p>
+            <a href="#home" class="footer__back-to-top" aria-label="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
