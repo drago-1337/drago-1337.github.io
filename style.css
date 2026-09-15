@@ -97,7 +97,8 @@ section{
     flex-shrink: 0;
 }
 
-.home-img img{
+.home-img img,
+.home-img video{
     display: block;
     width: 30vw;
     max-width: 340px;
@@ -111,7 +112,8 @@ section{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.home-img img:hover{
+.home-img img:hover,
+.home-img video:hover{
     transform: scale(1.03);
     box-shadow: 0 0 45px rgba(75, 183, 156, 0.7);
 }
@@ -556,7 +558,8 @@ section{
         gap: 5rem;
     }
 
-    .home-img img{
+    .home-img img,
+    .home-img video{
         width: 34vw;
         max-width: 280px;
     }
@@ -632,7 +635,8 @@ section{
         order: -1;
     }
 
-    .home-img img{
+    .home-img img,
+    .home-img video{
         width: min(50vw, 220px);
         min-width: 180px;
     }
