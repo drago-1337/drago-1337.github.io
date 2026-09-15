@@ -19,7 +19,22 @@ body{
     width: 100%;
     min-height: 100vh;
     background-color: black;
+    background-image: url('assets/background.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: white;
+    isolation: isolate;
+}
+
+body::before{
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: -1;
+    pointer-events: none;
 }
 
 header{
@@ -574,6 +589,33 @@ section{
 }
 
 @media (max-width: 768px){
+    body{
+        background-image: none;
+        background-color: black;
+    }
+
+    /* Fixed viewport-sized background (iOS ignores background-attachment: fixed) */
+    body::before{
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: url('assets/mobile_bg.png');
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        z-index: -2;
+    }
+
+    /* Dark overlay above image, below content */
+    body::after{
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: -1;
+        pointer-events: none;
+    }
+
     header{
         top: 15px;
         padding: 0 1rem;
@@ -661,6 +703,10 @@ section{
 }
 
 @media (max-width: 480px){
+    body::before{
+        background-position: center center;
+    }
+
     .home .home-content h1{
         font-size: 3.8rem;
     }
